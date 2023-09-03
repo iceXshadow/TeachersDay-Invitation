@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
     font-family: sans-serif;
 }
@@ -12,6 +11,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+        background-color: #063a03; /* Dark chalkboard color */
+        color: #ffffff; /* White text for contrast */
+        font-family: 'Courier New', Courier, monospace;
+    /* A Brown Boder along with some shadow */
+    border: 1em #3e0101;
+    border-style:groove
+
+
+
 }
 main {
     width: 45vw;
