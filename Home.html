@@ -23,7 +23,7 @@
 
         </section>
         <section class="table_body">
-            <table>
+            <table id="teacher-table">
                 <thead>
                     <tr>
                         <th>S.NO.</th>
@@ -385,28 +385,116 @@
     <!-- <iframe id="video" src="https://www.youtube-nocookie.com/embed/R9OeUYUOsAE?si=PtMXImaRtmcuTGyp" title="YouTube video player" frameborder="2" allow="autoplay; " allowfullscreen></iframe> -->
     
     <script>
-        window.addEventListener('DOMContentLoaded', (event) => {
-            // Get the table and its tbody
-            const table = document.querySelector('table');
-            const tbody = table.querySelector('tbody');
+    
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Get the table and its tbody
+    const table = document.querySelector('table');
+    const tbody = table.querySelector('tbody');
 
-            // Get the rows and convert them into an array
-            const rows = Array.from(tbody.querySelectorAll('tr'));
+    // Get the rows and convert them into an array
+    const rows = Array.from(tbody.querySelectorAll('tr'));
 
-            // Sort the rows alphabetically based on the "TEACHERS NAME" column
-            // rows.sort((a, b) => {
-            //     const nameA = a.querySelector('td:nth-child(3) a').textContent.trim().toUpperCase();
-            //     const nameB = b.querySelector('td:nth-child(3) a').textContent.trim().toUpperCase();
-            //     return nameA.localeCompare(nameB);
-            // });
+    // Define the desired order of names
+    const desiredOrder = [
+    "MR. AJAY KUMAR SINGH",
+    "MR. A.P. PARIHAR",
+    "MR. NEELESH KUMAR GUPTA",
+    "MR. L.B.SHARMA",
+    "MR. D.N.DUBEY",
+    "MR. SANJEEV KUMAR SHRIVASTAVA",
+    "MR. HIMANSHU KOLHATKAR",
+    "MR. SUNIL SURENDRAN",
+    "MR. SANJAY KUMAR",
+    "MRS. SAROJ RANI",
+    "MR. N.P.MISHRA",
+    "MR. SHREEKANTA NAYAK",
+    "MR. A.C.UPADHYAY",
+    "MRS. HONEY C.K.",
+    "MR. R.K.PANDEY",
+    "MRS. SUDHA SINGH",
+    "MRS. DEVIKA VIJH",
+    "MRS. REENA SINHA",
+    "MR. PANKAJ KUMAR SRIVASTAVA",
+    "MS. SEEMA SINGH",
+    "MRS. ETIKA GHOSH",
+    "MRS. BAISHAKHI MAITI",
+    "MR. ASHOK KUMAR PANDEY",
+    "MRS. ANJU PATHAK",
+    "MRS. NEETU PANDEY",
+    "MR. RAJESH KUMAR MISHRA",
+    "MR. LAKSHMAN GORAIN",
+    "MR. SUDIP KUMAR DATTA",
+    "MRS. LILY RANI SINGH",
+    "MRS. ANJALI SINGH",
+    "MR. I.K.UPADHAYAY",
+    "MR. C.P.GUPTA",
+    "MR. ABDUL WAHID KHAN",
+    "MRS. SOMA GHOSH",
+    "MR. ABHIJEET RAJ ANAND",
+    "MR. RADHIKESH RANJAN SHRIVASTAV",
+    "MR. AMIT KUMAR CHATURVEDI",
+    "MR. AWADHESH KUMAR TIWARI",
+    "MRS. PRATIBHA TRIPATHI",
+    "MR. VINOD",
+    "MR. AVINASH KUMAR JAISWAL",
+    "MRS. ASHA P. NAIR",
+    "Mr. Natansh Sharma",
+    "Mr. Danvendra.Singh",
+    "Mr. Avinash Kumar Jaiswal",
+    "Mr. Sachidanand Yadav",
+    "Mr. Piyush Rai",
+    "Mr. Ashutosh Gupta",
+    "Ms. Abha Shukla",
+    "Mrs. Shrutika Rai",
+    "Mr. Digvijay Singh",
+    "Mrs. Upasana Singh",
+    "Ms. Shamli Singh",
+    "Mrs. Saumya Dubey",
+    "Ms. Neha Dubey",
+    "Mrs. Payal Priya",
+    "Mrs. Shivani Sharma",
+    "Mrs. Akriti Dubey",
+    "Mr. Sobhit Kumar Maurya",
+    "Mrs. Maunika Gupta",
+    "Mrs. Madhulika Shrivastava",
+    "Mrs. Pratiksha Singh",
+    "Mrs. Neha Soni",
+    "Mrs. Monika Gupta",
+    "Mr. Mukesh Chandra",
+    "Mr. Aman Kumar Srivastav",
+    "Mr. Rahul Kushwah",
+    "Md. Arshad Khan",
+    "Mr. Sanjay Kumar",
+]
 
-            // Reorder the rows in the tbody
-            rows.forEach((row, index) => {
-                tbody.appendChild(row);
-                // Update the "S.NO" column with serial numbers
-                row.querySelector('td:nth-child(1)').textContent = index + 1 + ".";
-            });
-        });
+    // Create an object to store row elements by name
+    const rowsByName = {};
+
+    // Iterate through the table rows and store them in the object
+    rows.forEach((row, index) => {
+        const name = row.querySelector('td:nth-child(3) a').textContent.trim();
+        rowsByName[name] = row;
+
+        // Update the "S.NO" column with serial numbers
+        row.querySelector('td:nth-child(1)').textContent = index + 1 + ".";
+    });
+
+    // Clear the table
+    while (tbody.firstChild) {
+        tbody.removeChild(tbody.firstChild);
+    }
+
+    // Rebuild the table in the desired order
+    desiredOrder.forEach((name, index) => {
+        const row = rowsByName[name];
+        if (row) {
+            tbody.appendChild(row.cloneNode(true));
+            // Update the "S.NO" column with serial numbers
+            row.querySelector('td:nth-child(1)').textContent = index + 1 + ".";
+        }
+    });
+});
+
     </script>
 </body>
 
