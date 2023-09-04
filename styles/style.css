@@ -83,7 +83,7 @@ main::-webkit-scrollbar {
 }
 
 /* Media query for responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     main {
         width: 95%; /* Adjust the width percentage as needed for smaller screens */
         height: 60vh; /* Adjust the height percentage or value as needed for smaller screens */
