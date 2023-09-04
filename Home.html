@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/style.css">
     <title>Teacher's Day Celebration</title>
 </head>
@@ -19,8 +20,16 @@
         <section class="table_hader">
             <h1 align="center" style="font-family: cursive;">Tap On Your Name</h1>
             <p align="center" style="padding: 2px;font-family: monospace; font-size: larger;">Here, we celebrate the incredible teachers who inspire and guide us every day. Click on your name below to unlock a special gift and continue the exciting journey of our celebration:</p>
-
-
+            <div style="display: flex;align-items: center;justify-content: center;max-width: 100%;
+            height: 1rem; 
+            margin: 10px;
+            outline: 0;
+            padding: 0 1.6rem;
+            border-radius: 1em;
+            position: relative;
+            ">
+            <i class="fa fa-search icon"></i><input class="input-field" style="border-radius: 1em; padding: 10px; width: 100%; height: 4.5vh; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);outline: none;" type="text" id="searchInput" placeholder="Search for your name">
+            </div>
         </section>
         <section class="table_body">
             <table id="teacher-table">
@@ -492,8 +501,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Update the "S.NO" column with serial numbers
             row.querySelector('td:nth-child(1)').textContent = index + 1 + ".";
         }
+        const searchInput = document.getElementById('searchInput');
+
+const rows = Array.from(tbody.querySelectorAll('tr'));
+
+// Function to filter and display matching rows
+function filterRows(query) {
+    rows.forEach((row) => {
+        const name = row.querySelector('td:nth-child(3) a').textContent.trim().toUpperCase();
+        if (name.includes(query.toUpperCase())) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
     });
+}
+
+// Initial display of all rows
+filterRows('');
+
+// Listen for changes in the search input
+searchInput.addEventListener('input', (event) => {
+    filterRows(event.target.value);
 });
+});
+    });
 
     </script>
 </body>
