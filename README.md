@@ -2,8 +2,6 @@
 
 This repository contains an invitation for the Teachers' Day celebration.
 
-## Hacktoberfest Repo
-
 ## Purpose
 
 The purpose of this repository is to invite teachers to the Teachers' Day celebration.
